@@ -5,9 +5,31 @@ import './App.css'
 
 // no react, componentes são FUNÇÕES
 
-function TituloFormulario (props) {
+function TituloFormulario ( props ) {
   return (
     <h2>{props.children}</h2>
+  )
+}
+
+function CampoDeFormulario ( props ) {
+  return (
+    <fieldset>
+      {props.children}
+    </fieldset>
+  )
+}
+
+function Label( props ) {
+  return (
+    <label htmlFor={props.htmlFor}>
+      {props.children}
+    </label>
+  )
+}
+
+function CampoDeEntrada ( props ) {
+  return (
+      <input {...props}/>
   )
 }
 
@@ -17,12 +39,16 @@ function FormularioDeEvento () {
       <TituloFormulario>
         Preencha para criar um evento
       </TituloFormulario>
-      <fieldset>
-        <label htmlFor="">
+      <CampoDeFormulario>
+        <Label htmlFor="nome">
           Qual o nome do evento?
-        </label>
-        <input type="text" id="nome" placeholder='Summer dev hits'/>
-      </fieldset>
+        </Label>
+        <CampoDeEntrada
+          type="text" 
+          id="nome" 
+          placeholder='Summer dev hits'
+          name='nomeEvento'/>
+      </CampoDeFormulario>
     </form>
   )
 }
