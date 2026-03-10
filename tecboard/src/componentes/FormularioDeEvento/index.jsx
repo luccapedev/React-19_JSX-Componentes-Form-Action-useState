@@ -6,7 +6,7 @@ import { TituloFormulario } from "../TituloFormulario";
 import { Botao } from '../Botao';
 import { ListaSuspensa } from '../ListaSuspensa';
 
-export function FormularioDeEvento ({ temas }) {
+export function FormularioDeEvento({ temas, aoSubmeter }) {
   function aoFormSubmetido(formData) {
     console.log('opa, tá na hora de criar um novo evento', formData)
     const evento = {
@@ -17,7 +17,7 @@ export function FormularioDeEvento ({ temas }) {
       data: new Date(formData.get('dataEvento')),
       titulo: formData.get('nomeEvento')
     }
-    console.log("Esse é o evento", evento)
+    aoSubmeter(evento)
   }
 
   return (
@@ -30,38 +30,38 @@ export function FormularioDeEvento ({ temas }) {
           <Label htmlFor="nomeEvento">
             Qual o nome do evento?
           </Label>
-          <CampoDeEntrada 
-            type="text" 
-            id="nomeEvento" 
+          <CampoDeEntrada
+            type="text"
+            id="nomeEvento"
             placeholder='Summer dev hits'
-            name='nomeEvento'/>
+            name='nomeEvento' />
         </CampoDeFormulario>
         <CampoDeFormulario>
           <Label htmlFor="capa">
             Qual o endereço da imagem de capa?
           </Label>
-          <CampoDeEntrada 
-            type="text" 
-            id="capa" 
+          <CampoDeEntrada
+            type="text"
+            id="capa"
             placeholder='http://...'
-            name='capa'/>
+            name='capa' />
         </CampoDeFormulario>
         <CampoDeFormulario>
           <Label htmlFor="dataEvento">
             Data do evento
           </Label>
           <CampoDeEntrada
-            type="date" 
-            id="dataEvento" 
+            type="date"
+            id="dataEvento"
             placeholder='Summer dev hits'
-            name='dataEvento'/>
+            name='dataEvento' />
         </CampoDeFormulario>
 
         <CampoDeFormulario>
           <Label htmlFor="tema">
             Tema do evento
           </Label>
-          <ListaSuspensa id ="tema" name="tema" itens={temas}/>
+          <ListaSuspensa id="tema" name="tema" itens={temas} />
         </CampoDeFormulario>
       </div>
       <div className='acoes'>
